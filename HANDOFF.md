@@ -106,11 +106,11 @@ Automated gate: `npm run verify` → `astro build` → `check-discrepancies` →
 
 ## 5. Deployment
 
-- Primary target: **Vercel** (adapter `@astrojs/vercel/serverless` already configured).
-  `npm run build` produces `.vercel/output`. Import the repo or run `vercel deploy`.
-- To deploy on **Netlify** or **Cloudflare Pages**, swap the adapter in `astro.config.mjs`
-  (`@astrojs/netlify` or `@astrojs/cloudflare`) and rebuild. The contact function and
-  redirects adapt automatically.
+- Primary target: **Netlify** (Astro 4-compatible `@astrojs/netlify` adapter configured).
+  Netlify runs `npm run build`, publishes `dist`, and deploys the contact API route.
+  Node.js 22.23.3 is pinned in `.nvmrc` for reproducible installs and builds.
+- To deploy on **Cloudflare Pages**, swap to its Astro-compatible adapter in
+  `astro.config.mjs` and rebuild.
 - Set env vars on the host (see `.env.example`): `OFFICE_EMAIL`, `RESEND_API_KEY`,
   `EMAIL_FROM`, optional `PUBLIC_GA4_ID`, optional `PUBLIC_SITE_URL`.
 - After launch: verify in Search Console, monitor FullSlate bookings and call logs for

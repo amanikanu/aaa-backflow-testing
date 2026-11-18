@@ -1,13 +1,13 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
+import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
   // Hybrid output: pages are prerendered (static, served from the CDN),
   // while the contact API route is a serverless function.
   output: 'hybrid',
-  adapter: vercel(),
+  adapter: netlify(),
   site: 'https://www.aaabft.com',
   integrations: [
     tailwind({ applyBaseStyles: false }),

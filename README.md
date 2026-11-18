@@ -27,7 +27,7 @@ legacy redirects `/faqs.html → /faq/`, `/aboutus.html → /about/`.
 | Command | What it does |
 |---------|--------------|
 | `npm run dev` | Local dev server (http://localhost:4321) |
-| `npm run build` | `generate-sitemap` + `astro build` → `.vercel/output` |
+| `npm run build` | `generate-sitemap` + `astro build` → `dist` |
 | `npm run check` | `astro check` (0 errors/warnings/hints in CI) |
 | `npm test` | Vitest unit tests (business data, contact validation, SEO, FAQ, redirects) |
 | `npm run lint:discrepancies` | Build-gate checks (typo, http links, meta keywords, dup titles, redirects…) |
@@ -55,9 +55,10 @@ Without `RESEND_API_KEY` the contact function logs a no-op and still returns suc
 
 ## Deploy
 
-Configured for **Vercel** (adapter `@astrojs/vercel/serverless`). `vercel deploy` after
-`npm run build`. For Netlify/Cloudflare, swap the adapter in `astro.config.mjs`
-(`@astrojs/netlify` / `@astrojs/cloudflare`) and rebuild.
+Configured for **Netlify** with the Astro 4-compatible `@astrojs/netlify` adapter.
+Netlify runs `npm run build`, publishes `dist`, and deploys the contact API route
+as a serverless function. `.nvmrc` pins Node.js 22.23.3 for dependency installation
+and builds; use `nvm use` to match that version locally.
 
 ## Quality gates (PRD 13.9)
 
