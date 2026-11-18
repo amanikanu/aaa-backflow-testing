@@ -8,6 +8,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileActionBar from '../components/MobileActionBar.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PreviewBanner from '../components/PreviewBanner.astro';
 import { pageMeta, SITE_NAME, type PageMetaInput } from '../lib/seo';
 import type { Json } from '../lib/schema';
 
@@ -50,6 +51,7 @@ const fullTitle = `${m.title} | ${SITE_NAME}`;
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
+    <PreviewBanner />
     <Header />
     <main id="main">
       {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumbs trail={breadcrumbs} />}
