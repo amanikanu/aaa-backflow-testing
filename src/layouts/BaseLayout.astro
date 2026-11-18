@@ -51,13 +51,13 @@ const fullTitle = `${m.title} | ${SITE_NAME}`;
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
-    <PreviewBanner />
     <Header />
     <main id="main">
       {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumbs trail={breadcrumbs} />}
       <slot />
     </main>
     <Footer />
+    <PreviewBanner />
     <MobileActionBar />
     <slot name="scripts" />
   </body>

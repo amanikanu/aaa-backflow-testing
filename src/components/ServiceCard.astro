@@ -45,26 +45,29 @@ const cardBullets = bullets ?? defaultBullets[slug] ?? defaultBullets['backflow-
 ---
 
 <div class="service-card group">
-  <!-- Card Header Image with Red Badge Overlay -->
-  <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100">
-    <img
-      src={cardImage}
-      alt={title}
-      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-      loading="lazy"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+  <!-- Card Header with image and floating red badge -->
+  <div class="relative">
+    <!-- Image with overflow hidden so rounded top and zoom stay clean -->
+    <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-t-2xl">
+      <img
+        src={cardImage}
+        alt={title}
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+    </div>
     
-    <!-- Red Circular Badge in bottom right of photo -->
-    <div class="absolute -bottom-3 right-4 w-10 h-10 rounded-full bg-[#c81e1e] text-white flex items-center justify-center shadow-md border-2 border-white">
+    <!-- Red Circular Badge floating ON TOP of the white container (z-20) -->
+    <div class="absolute -bottom-5 right-5 z-20 w-11 h-11 rounded-full bg-[#c81e1e] group-hover:bg-[#a81616] text-white flex items-center justify-center shadow-lg border-2 border-white transition-transform duration-200 group-hover:scale-110 pointer-events-none">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
       </svg>
     </div>
   </div>
 
-  <!-- Card Body -->
-  <div class="p-5 sm:p-6 flex flex-col flex-1">
+  <!-- Card Body (relative z-10 so badge with z-20 is on top of the white background) -->
+  <div class="p-5 sm:p-6 pt-7 flex flex-col flex-1 relative z-10 bg-white rounded-b-2xl">
     <h3 class="text-xl font-bold text-[#0d233a] group-hover:text-[#155eef] transition-colors">
       <a href={href} class="hover:underline focus:outline-none">
         {title}
