@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustBadgesBar from '../components/TrustBadgesBar.astro';
+import StorySection from '../components/StorySection.astro';
+import EmergencyBanner from '../components/EmergencyBanner.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import DualAudienceBanner from '../components/DualAudienceBanner.astro';
+import TeamSection from '../components/TeamSection.astro';
+import BenefitsSection from '../components/BenefitsSection.astro';
+import MapBookingSection from '../components/MapBookingSection.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { business } from '../content/business';
+import { faqPreview } from '../content/faq';
+import { localBusinessSchema, faqSchema } from '../lib/schema';
+---
+
+<BaseLayout
+  meta={{
+    title: 'Backflow Testing in San Francisco',
+    description:
+      'Certified backflow testing, repair & compliance in San Francisco. Book an annual test — we tag your device and file SFPUC reports. Call ' +
+      business.phone + '.',
+    path: '/',
+  }}
+  schema={[localBusinessSchema(), faqSchema()]}
+>
+  <!-- 1. Hero Section with Master Technician & Overlapping Quick Schedule Widget -->
+  <Hero />
+
+  <!-- 2. "Service You Can Count On" — 5 Circular Trust Badges -->
+  <TrustBadgesBar />
+
+  <!-- 3. "Family-Run / Dedicated to SF" — Story, Photo Collage & Stats -->
+  <StorySection />
+
+  <!-- 4. Emergency & Urgent SFPUC Notice Banner -->
+  <EmergencyBanner />
+
+  <!-- 5. "What We Do" — 6 Service Cards with Real Trade Photography -->
+  <ServicesGrid />
+
+  <!-- 6. "Meeting the Team You Trust" — Checklist & Field Photography -->
+  <WhyChooseUs />
+
+  <!-- 7. Dual Audience Split Banner (Commercial Navy & Residential Crimson) -->
+  <DualAudienceBanner />
+
+  <!-- 8. "Our Backflow Team" — Certified Technicians & Credentials -->
+  <TeamSection />
+
+  <!-- 9. "The Benefits of Regular Backflow Testing" -->
+  <BenefitsSection />
+
+  <!-- 10. Frequently Asked Questions -->
+  <section class="py-16 lg:py-24 bg-white border-b border-slate-200" aria-labelledby="faq-prev">
+    <div class="container-page max-w-4xl">
+      <div class="text-center mb-10">
+        <p class="eyebrow mx-auto justify-center">COMMON QUESTIONS</p>
+        <h2 id="faq-prev" class="text-3xl font-extrabold text-[#0d233a] tracking-tight mt-2">
+          Frequently Asked Questions
+        </h2>
+        <div class="w-16 h-1 bg-[#c81e1e] mx-auto mt-3 rounded-full"></div>
+      </div>
+      
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
+        <FAQAccordion items={faqPreview(4)} />
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="/faq/" class="btn btn-ghost text-sm font-bold border-2 border-slate-300 px-6 py-2.5">
+          See All Frequently Asked Questions →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. San Francisco Service Map & Interactive Quick Quote Form -->
+  <MapBookingSection />
+</BaseLayout>

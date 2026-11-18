@@ -1,0 +1,19 @@
+---
+import { serviceAreaStatement } from '../content/business';
+// One service-area statement, built from the flags, used in the hero, footer,
+// schema, and the service-area page (discrepancy #11).
+const area = serviceAreaStatement();
+---
+
+<section class="section" aria-labelledby="sa-title">
+  <div class="container-page">
+    <h2 id="sa-title" class="text-2xl font-bold">Service area</h2>
+    <p class="mt-2 text-muted max-w-2xl">
+      AAA Backflow Testing serves the <strong>{area}</strong>.
+    </p>
+    <p class="mt-2 text-sm text-muted">
+      Not sure if we cover your address? <a href="/contact/" class="text-brand-700 font-medium">Ask us</a> —
+      we’ll confirm quickly.
+    </p>
+  </div>
+</section>

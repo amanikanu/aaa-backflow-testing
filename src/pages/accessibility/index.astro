@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { business } from '../../content/business';
+import { localBusinessSchema, breadcrumbSchema } from '../../lib/schema';
+
+const trail = [{ name: 'Accessibility Statement', path: '/accessibility/' }];
+---
+
+<BaseLayout
+  meta={{
+    title: 'Accessibility Statement',
+    description: 'AAA Backflow Testing’s commitment to WCAG 2.2 AA accessibility and how to report a barrier.',
+    path: '/accessibility/',
+  }}
+  schema={[localBusinessSchema(), breadcrumbSchema(trail)]}
+  breadcrumbs={trail}
+>
+  <section class="section">
+    <div class="container-page max-w-3xl prose-content">
+      <h1 class="text-3xl font-bold">Accessibility Statement</h1>
+      <p class="text-muted">Last updated 2026-11-17.</p>
+
+      <h2 class="mt-6 text-xl font-semibold">Our commitment</h2>
+      <p>
+        AAA Backflow Testing is committed to making this website usable for everyone. We aim to meet
+        WCAG 2.2 AA. The site uses semantic HTML, real text (not text inside images) for all navigation
+        and labels, visible keyboard focus, sufficient colour contrast, and respects reduced-motion
+        preferences. We do not use accessibility-overlay widgets; we fix the underlying markup instead.
+      </p>
+
+      <h2 class="mt-6 text-xl font-semibold">What we do</h2>
+      <ul>
+        <li>All navigation and buttons use real, readable text.</li>
+        <li>Forms have labelled controls and accessible inline error messages.</li>
+        <li>Touch targets meet the 44px minimum.</li>
+        <li>Pages are responsive and tested at narrow widths.</li>
+      </ul>
+
+      <h2 class="mt-6 text-xl font-semibold">Known limitations</h2>
+      <p>
+        Some content depends on third-party tools (for example the FullSlate scheduler). We cannot
+        control their accessibility but will help you book or ask questions by phone or email.
+      </p>
+
+      <h2 class="mt-6 text-xl font-semibold">Feedback</h2>
+      <p>
+        If you encounter a barrier, tell us. We take reports seriously and will work to fix verified
+        issues.
+      </p>
+      <ul>
+        <li>Email: <a href={`mailto:${business.email}`} class="text-brand-700">{business.email}</a></li>
+        <li>Phone: <a href={business.phoneHref} class="text-brand-700">{business.phone}</a></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

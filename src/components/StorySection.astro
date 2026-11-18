@@ -1,0 +1,107 @@
+---
+import { business } from '../content/business';
+---
+
+<section class="py-16 lg:py-24 bg-slate-50 border-b border-slate-200 overflow-hidden" aria-labelledby="story-title">
+  <div class="container-page">
+    <div class="grid items-center gap-12 lg:grid-cols-12">
+      <!-- Left Column: Photo Grid with Badges -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative grid grid-cols-2 gap-3 sm:gap-4 max-w-lg mx-auto lg:max-w-none">
+          <div class="space-y-3 sm:space-y-4">
+            <div class="rounded-xl overflow-hidden shadow-md border-2 border-white">
+              <img
+                src="/images/service-testing.jpg"
+                alt="Technician testing backflow preventer with 5-valve differential pressure test gauge"
+                class="w-full h-48 sm:h-56 object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-md border-2 border-white">
+              <img
+                src="/images/service-repair.jpg"
+                alt="Disassembled backflow preventer check valve rebuild on workshop bench"
+                class="w-full h-40 sm:h-44 object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-3 sm:space-y-4 pt-6">
+            <div class="rounded-xl overflow-hidden shadow-md border-2 border-white">
+              <img
+                src="/images/service-install.jpg"
+                alt="Outdoor backflow preventer assembly installation"
+                class="w-full h-40 sm:h-48 object-cover"
+                loading="lazy"
+              />
+            </div>
+            
+            <!-- Red Established Experience Badge -->
+            <div class="bg-[#c81e1e] text-white p-5 rounded-xl shadow-xl flex flex-col justify-center items-center text-center">
+              <span class="text-3xl sm:text-4xl font-extrabold tracking-tight">25+</span>
+              <span class="text-xs font-bold uppercase tracking-wider mt-1 text-red-100">Years Serving San Francisco</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Narrative & Stats -->
+      <div class="lg:col-span-7">
+        <p class="eyebrow">ABOUT AAA BACKFLOW TESTING</p>
+        <h2 id="story-title" class="text-3xl sm:text-4xl font-extrabold text-[#0d233a] tracking-tight mt-2">
+          San Francisco’s Dedicated Backflow Prevention Specialists
+        </h2>
+        <div class="w-20 h-1.5 bg-[#c81e1e] mt-3 rounded-full"></div>
+
+        <!-- Red Quote Bar -->
+        <div class="mt-6 border-l-4 border-[#c81e1e] pl-4 py-1 bg-white/70 rounded-r-lg border-y border-r border-slate-200/50">
+          <p class="text-slate-800 text-base sm:text-lg font-medium italic">
+            “Clean drinking water is non-negotiable. When your SFPUC annual testing notice arrives, you don’t need stress or complicated paperwork — you need a certified technician who arrives on schedule, completes the test cleanly, and files the compliance report directly.”
+          </p>
+        </div>
+
+        <p class="mt-5 text-slate-600 text-base leading-relaxed">
+          Unlike general plumbing contractors who treat backflow as an occasional afterthought, AAA Backflow Testing
+          specializes 100% in cross-connection control, annual certification, emergency rebuilding, and municipal reporting.
+          We work directly with the San Francisco Public Utilities Commission (SFPUC) and the Department of Public Health (DPH)
+          to ensure your property stays safe and fully cleared of violations.
+        </p>
+
+        <!-- 4 Metric Stats Boxes -->
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+            <span class="block text-2xl sm:text-3xl font-extrabold text-[#155eef]">100%</span>
+            <span class="block text-xs font-semibold text-slate-500 mt-1 uppercase">SFPUC Filing Guarantee</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+            <span class="block text-2xl sm:text-3xl font-extrabold text-[#0d233a]">15k+</span>
+            <span class="block text-xs font-semibold text-slate-500 mt-1 uppercase">Assemblies Tested</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+            <span class="block text-2xl sm:text-3xl font-extrabold text-[#c81e1e]">24h</span>
+            <span class="block text-xs font-semibold text-slate-500 mt-1 uppercase">Report Turnaround</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+            <span class="block text-2xl sm:text-3xl font-extrabold text-[#0d233a]">3 Yrs</span>
+            <span class="block text-xs font-semibold text-slate-500 mt-1 uppercase">Audit Records Kept</span>
+          </div>
+        </div>
+
+        <div class="mt-8 flex items-center gap-4">
+          <a href="/about/" class="btn btn-cta text-sm px-6 py-3">
+            Learn More About Us
+          </a>
+          <a href={business.phoneHref} class="text-sm font-bold text-[#0d233a] hover:text-[#155eef] flex items-center gap-2">
+            <span>Questions? Call {business.phone}</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

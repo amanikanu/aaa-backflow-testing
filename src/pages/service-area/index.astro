@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { business, config, serviceAreaStatement } from '../../content/business';
+import { localBusinessSchema, breadcrumbSchema } from '../../lib/schema';
+
+const area = serviceAreaStatement();
+const trail = [{ name: 'Service Area', path: '/service-area/' }];
+---
+
+<BaseLayout
+  meta={{
+    title: 'Service Area',
+    description:
+      'AAA Backflow Testing serves the City and County of San Francisco for backflow testing, repair, and compliance reporting. Confirm your address with us.',
+    path: '/service-area/',
+  }}
+  schema={[localBusinessSchema(), breadcrumbSchema(trail)]}
+  breadcrumbs={trail}
+>
+  <section class="section">
+    <div class="container-page max-w-3xl">
+      <h1 class="text-3xl font-bold">Service area</h1>
+      <p class="mt-4 text-lg text-muted">
+        AAA Backflow Testing serves the <strong>{area}</strong> for backflow testing, repair,
+        new-installation consulting, and compliance reporting.
+      </p>
+
+      <div class="mt-8 space-y-4">
+        <div class="card">
+          <h2 class="font-semibold text-lg">City and County of San Francisco</h2>
+          <p class="mt-2 text-muted">
+            Our primary service area. We handle the full compliance workflow with the city, the
+            Department of Public Health (DPH), and the Public Utilities Commission (PUC).
+          </p>
+        </div>
+
+        {
+          config.marinEnabled && (
+            <div class="card">
+              <h2 class="font-semibold text-lg">{business.serviceAreaMarin}</h2>
+              <p class="mt-2 text-muted">We also serve {business.serviceAreaMarin}. Contact us to confirm your address.</p>
+            </div>
+          )
+        }
+      </div>
+
+      <p class="mt-6 text-muted">{business.afterHoursNote}</p>
+
+      <p class="mt-6 text-muted">
+        Not sure we cover your address? <a href="/contact/" class="text-brand-700 font-medium">Ask us</a> —
+        we’ll confirm quickly. Outside the listed areas, reach out and we’ll see what we can arrange.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-3">
+        <a href="/book/" class="btn btn-cta">Book a Test</a>
+        <a href={business.phoneHref} class="btn btn-ghost">Call {business.phone}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

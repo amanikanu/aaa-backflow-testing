@@ -1,0 +1,52 @@
+---
+import { business, config } from '../content/business';
+
+const show = config.showPrice;
+const p = business.price;
+---
+
+{
+  show ? (
+    <section class="my-8" aria-labelledby="price-title">
+      <div class="card bg-[#0b2341] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6 !border-0 p-6 sm:p-8 rounded-2xl shadow-xl">
+        <div>
+          <span class="inline-block px-3 py-1 bg-red-600 text-white text-xs font-bold uppercase tracking-wider rounded-md mb-2">
+            Standard Flat Rate
+          </span>
+          <h2 id="price-title" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+            ${p.amountPerDevice} per device — Annual Test
+          </h2>
+          <p class="mt-2 text-slate-200 text-sm max-w-xl leading-relaxed">
+            Includes {p.includes}. {p.failedFeeNote}
+          </p>
+        </div>
+        <a href="/book/" class="btn btn-cta text-base shrink-0 shadow-red">
+          Book a Test
+        </a>
+      </div>
+    </section>
+  ) : (
+    <section class="my-8" aria-labelledby="price-title">
+      <div class="card bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center md:justify-between gap-6 p-6 sm:p-8 rounded-2xl shadow-sm">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider rounded-md mb-1.5">
+            Clear Upfront Pricing
+          </span>
+          <h2 id="price-title" class="text-2xl font-bold text-[#0d233a]">Simple Flat-Rate Pricing</h2>
+          <p class="mt-2 text-slate-600 text-sm max-w-xl leading-relaxed">
+            We charge a flat rate per device for the annual test, including official DPH tags and direct SFPUC city paperwork.
+            Volume discounts available for multi-device commercial properties.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <a href="/contact/" class="btn btn-cta text-sm">
+            Request Quote
+          </a>
+          <a href={business.phoneHref} class="btn btn-ghost text-sm font-bold border-2 border-slate-300">
+            Call {business.phone}
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}

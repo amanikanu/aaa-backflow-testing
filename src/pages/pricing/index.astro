@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { business, config } from '../../content/business';
+import { localBusinessSchema, breadcrumbSchema } from '../../lib/schema';
+
+const p = business.price;
+const trail = [{ name: 'Pricing', path: '/pricing/' }];
+---
+
+<BaseLayout
+  meta={{
+    title: 'Backflow Testing Pricing',
+    description:
+      'Flat-rate backflow testing in San Francisco. One price per device includes DPH tags and the city paperwork; the fee applies whether the device passes or fails.',
+    path: '/pricing/',
+  }}
+  schema={[localBusinessSchema(), breadcrumbSchema(trail)]}
+  breadcrumbs={trail}
+>
+  <section class="section">
+    <div class="container-page max-w-3xl">
+      <h1 class="text-3xl font-bold">Pricing</h1>
+
+      {
+        config.showPrice ? (
+          <>
+            <div class="card mt-6 bg-brand-50">
+              <p class="eyebrow text-brand-600">Flat rate per device</p>
+              <p class="mt-2 text-4xl font-bold text-brand-800">
+                ${p.amountPerDevice} <span class="text-lg font-normal text-muted">/ device · annual test</span>
+              </p>
+              <p class="mt-3 text-muted">{p.includes}.</p>
+              <p class="mt-2 text-muted">{p.failedFeeNote}</p>
+            </div>
+            <ul class="mt-6 space-y-3">
+              <li class="flex items-start gap-2"><span class="mt-1 text-brand-600" aria-hidden="true">✓</span><span>Includes the DPH tag attached to your device.</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 text-brand-600" aria-hidden="true">✓</span><span>We file the test report with the city (PUC and DPH).</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 text-brand-600" aria-hidden="true">✓</span><span>The testing fee is the same whether the device passes or fails.</span></li>
+            </ul>
+            {p.multipleDeviceNote && <p class="mt-4 text-muted">{p.multipleDeviceNote}</p>}
+            <p class="mt-6 text-muted">
+              Have several devices or a commercial site? <a href="/contact/" class="text-brand-700 font-medium">Contact us for a multi-device quote</a>.
+            </p>
+          </>
+        ) : (
+          <>
+            <p class="mt-4 text-lg text-muted">
+              We charge a flat rate per device for the annual test. The fee includes DPH tags and the
+              paperwork filed with the city (PUC and DPH), and it is due whether the device passes or
+              fails.
+            </p>
+            <p class="mt-4 text-muted">
+              For the current rate and multi-device or commercial quotes, please
+              <a href="/contact/" class="text-brand-700 font-medium">contact us</a> or call
+              <a href={business.phoneHref} class="text-brand-700 font-medium"> {business.phone}</a>.
+            </p>
+          </>
+        )
+      }
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-3">
+        <a href="/book/" class="btn btn-cta">Book a Test</a>
+        <a href="/contact/" class="btn btn-ghost">Get a quote</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

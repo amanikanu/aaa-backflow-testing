@@ -1,0 +1,31 @@
+---
+import { business, config } from '../content/business';
+// Reviews are shown ONLY when the client has approved them (config.showReviews).
+// We never claim a star rating that is not sourced (guardrail 13.10).
+const show = config.showReviews;
+const r = business.reviews;
+---
+
+{
+  show && (
+    <section class="section bg-brand-50" aria-labelledby="rev-title">
+      <div class="container-page text-center">
+        <h2 id="rev-title" class="text-2xl font-bold">What customers say</h2>
+        <p class="mt-2 text-muted">
+          {r.count} reviews on {r.source}.{' '}
+          <a href={r.url} class="text-brand-700 font-medium" rel="noopener">Read them on {r.source} ↗</a>
+        </p>
+        {r.testimonials.length > 0 && (
+          <div class="mt-6 grid gap-4 md:grid-cols-2 max-w-3xl mx-auto">
+            {r.testimonials.map((t) => (
+              <blockquote class="card text-left">
+                <p class="text-ink">“{t.quote}”</p>
+                <footer class="mt-2 text-muted text-sm">— {t.author}</footer>
+              </blockquote>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}

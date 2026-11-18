@@ -1,0 +1,58 @@
+---
+const badges = [
+  {
+    title: 'Rapid Response',
+    subtitle: 'Same-day & next-day testing slots across San Francisco',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />`,
+  },
+  {
+    title: 'AWWA Certified',
+    subtitle: 'Certified backflow prevention testers renewed annually',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />`,
+  },
+  {
+    title: 'Guaranteed Tagging',
+    subtitle: 'Official DPH physical tags affixed immediately upon passing',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />`,
+  },
+  {
+    title: 'SFPUC Paperwork Filed',
+    subtitle: 'Direct digital submission to water department within 24 hours',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />`,
+  },
+  {
+    title: 'Licensed C-36 Contractor',
+    subtitle: 'Master plumbing credentials, fully insured & bonded',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />`,
+  },
+];
+---
+
+<section class="py-12 bg-white border-b border-slate-100" aria-labelledby="count-on-title">
+  <div class="container-page">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 id="count-on-title" class="text-2xl sm:text-3xl font-extrabold text-[#0d233a] tracking-tight">
+        Service You Can Count On
+      </h2>
+      <div class="w-16 h-1 bg-[#c81e1e] mx-auto mt-3 rounded-full"></div>
+      <p class="text-slate-600 text-sm sm:text-base mt-2">
+        San Francisco property owners and managers trust us for worry-free annual backflow compliance.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      {
+        badges.map((b) => (
+          <div class="flex flex-col items-center text-center group">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-50 border-2 border-blue-600 text-blue-600 flex items-center justify-center mb-3.5 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all group-hover:scale-105 duration-200">
+              <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={b.icon} />
+            </div>
+            <h3 class="font-bold text-sm sm:text-base text-[#0d233a] leading-snug">{b.title}</h3>
+            <p class="text-xs text-slate-500 mt-1 max-w-[170px] leading-relaxed">{b.subtitle}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+

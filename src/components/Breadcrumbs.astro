@@ -1,0 +1,22 @@
+---
+interface Props {
+  trail: { name: string; path: string }[];
+}
+const { trail } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="container-page pt-4 text-sm text-muted">
+  <ol class="flex flex-wrap items-center gap-1 list-none p-0 m-0">
+    <li><a href="/" class="hover:text-brand-700">Home</a></li>
+    {trail.map((t) => (
+      <li class="flex items-center gap-1">
+        <span aria-hidden="true">/</span>
+        {t.path === Astro.url.pathname ? (
+          <span aria-current="page" class="text-ink">{t.name}</span>
+        ) : (
+          <a href={t.path} class="hover:text-brand-700">{t.name}</a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

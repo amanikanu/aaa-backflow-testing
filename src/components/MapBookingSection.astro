@@ -1,0 +1,161 @@
+---
+import { business } from '../content/business';
+
+const neighborhoods = [
+  'Sunset District', 'Richmond District', 'Marina & Cow Hollow', 'Pacific Heights',
+  'Mission District', 'SoMa & South Beach', 'Noe Valley', 'Financial District',
+  'Nob Hill & Russian Hill', 'Potrero Hill', 'Bernal Heights', 'Presidio Heights',
+  'Haight-Ashbury', 'Castro & Upper Market', 'Bayview-Hunters Point', 'Outer Mission',
+];
+---
+
+<section class="relative py-20 lg:py-28 bg-slate-100 overflow-hidden border-b border-slate-200" aria-labelledby="map-booking-title">
+  <!-- Subtle Architectural SF Map Grid SVG Background -->
+  <div class="absolute inset-0 opacity-15 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#0d233a" stroke-width="1"/>
+          <circle cx="60" cy="60" r="2" fill="#0d233a"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+  </div>
+
+  <div class="container-page relative z-10">
+    <div class="grid items-center gap-12 lg:grid-cols-12">
+      <!-- Left Column: Service Area Info -->
+      <div class="lg:col-span-6">
+        <p class="eyebrow">SAN FRANCISCO SERVICE COVERAGE</p>
+        <h2 id="map-booking-title" class="text-3xl sm:text-4xl font-extrabold text-[#0d233a] tracking-tight mt-2">
+          Fast Backflow Testing Across Every San Francisco Neighborhood
+        </h2>
+        <div class="w-16 h-1 bg-[#c81e1e] mt-3 rounded-full"></div>
+
+        <p class="mt-5 text-slate-600 text-base leading-relaxed">
+          From residential single-family homes to high-density commercial corridors and multi-tenant high-rises,
+          our certified mobile technicians are on the road daily with calibrated gauges and replacement parts.
+        </p>
+
+        <div class="mt-6">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Covered SF Districts</p>
+          <div class="flex flex-wrap gap-2">
+            {
+              neighborhoods.map((n) => (
+                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-2xs">
+                  {n}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="mt-8 bg-blue-50/80 border border-blue-200 p-4 rounded-xl flex items-center gap-3">
+          <span class="text-2xl">📞</span>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-blue-900">Immediate Phone Dispatch</p>
+            <p class="text-sm font-semibold text-blue-950">Call <a href={business.phoneHref} class="font-bold underline text-[#c81e1e]">{business.phone}</a> for rapid same-day booking confirmation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Clean White Floating Booking Form -->
+      <div class="lg:col-span-6">
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-8 max-w-lg mx-auto lg:max-w-none">
+          <div class="border-b border-slate-100 pb-4 mb-5">
+            <h3 class="text-2xl font-extrabold text-[#0d233a]">Request a Test in San Francisco</h3>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Fill out the quick form below. We confirm within 1 business hour.</p>
+          </div>
+
+          <form action="/contact/" method="POST" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="mb-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Full Name *</label>
+                <input
+                  id="mb-name"
+                  name="fullName"
+                  type="text"
+                  required
+                  placeholder="Jane Doe"
+                  class="input"
+                />
+              </div>
+
+              <div>
+                <label for="mb-phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Phone Number *</label>
+                <input
+                  id="mb-phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  placeholder="(415) 555-0123"
+                  class="input"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="mb-email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Email Address *</label>
+              <input
+                id="mb-email"
+                name="email"
+                type="email"
+                required
+                placeholder="jane@example.com"
+                class="input"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="mb-address" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Property Address / Zip *</label>
+                <input
+                  id="mb-address"
+                  name="propertyType"
+                  type="text"
+                  required
+                  placeholder="123 Market St, SF"
+                  class="input"
+                />
+              </div>
+
+              <div>
+                <label for="mb-type" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Device Type / Note</label>
+                <select id="mb-type" name="deviceType" class="input">
+                  <option value="commercial">Commercial Assembly</option>
+                  <option value="residential">Residential / Irrigation</option>
+                  <option value="fireline">Fire Sprinkler Line (DCDA)</option>
+                  <option value="unsure">Not Sure / Got Test Notice</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="mb-message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Notice Number or Details</label>
+              <textarea
+                id="mb-message"
+                name="message"
+                rows="2"
+                placeholder="SFPUC account or test notice number (if available)..."
+                class="input !min-h-[70px] resize-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full btn btn-cta text-base py-3.5 shadow-red cursor-pointer uppercase tracking-wider font-extrabold"
+            >
+              Submit Test Request
+            </button>
+
+            <p class="text-center text-xs text-slate-400 mt-2">
+              🔒 No spam. Fast 1-hour callback. SFPUC test reports filed directly.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

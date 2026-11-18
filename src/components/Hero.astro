@@ -1,0 +1,102 @@
+---
+import { business, config } from '../content/business';
+import ScheduleServiceWidget from './ScheduleServiceWidget.astro';
+---
+
+<section class="relative bg-gradient-to-b from-slate-50 via-white to-slate-100/60 pt-10 pb-16 lg:pt-16 lg:pb-20 overflow-hidden border-b border-slate-200">
+  <div class="container-page">
+    <div class="grid items-center gap-10 lg:grid-cols-12">
+      <!-- Left Column: Copy & CTAs -->
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
+          <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+          San Francisco · Licensed C-36 &amp; AWWA Certified
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0d233a] leading-[1.1] tracking-tight">
+          Trusted <span class="text-[#155eef]">Testing.</span><br />
+          Reliable <span class="text-[#c81e1e]">Protection.</span>
+        </h1>
+
+        <p class="mt-5 text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
+          San Francisco’s premier certified backflow prevention, annual testing, and precision repair specialists.
+          We test your assembly on-site, affix the official DPH tag, and submit your compliance report directly
+          to SFPUC on the same day.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+          <a href="/book/" class="btn btn-cta text-base px-7 py-3.5 shadow-red">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            Schedule a Test
+          </a>
+          <a href={business.phoneHref} class="btn btn-ghost text-base px-6 py-3.5 border-2 border-slate-300 font-bold text-[#0d233a]">
+            <svg class="w-5 h-5 text-[#c81e1e]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/>
+            </svg>
+            Call {business.phone}
+          </a>
+        </div>
+
+        {
+          config.showPrice && (
+            <p class="mt-4 text-sm font-semibold text-slate-700">
+              <span class="text-[#c81e1e] font-bold">${business.price.amountPerDevice}</span> flat rate per device for annual testing, including DPH tags &amp; city filing.
+            </p>
+          )
+        }
+
+        <!-- Trust Features Checklist -->
+        <ul class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6 border-t border-slate-200/80 text-sm font-semibold text-slate-700">
+          <li class="flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">✓</span>
+            AWWA Certified Testers
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">✓</span>
+            Same-Day SFPUC Tagging
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">✓</span>
+            3-Year Audit Records Kept
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Column: Authentic Professional Hero Photo -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative mx-auto max-w-md lg:max-w-none">
+          <!-- Decorative frame accents -->
+          <div class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-blue-600/20 via-red-500/10 to-transparent blur-lg"></div>
+
+          <div class="relative rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-slate-100">
+            <img
+              src="/images/hero-technician.jpg"
+              alt="Certified Master Technician standing with professional backflow preventer assembly and testing pipes"
+              width="640"
+              height="480"
+              class="w-full h-auto object-cover object-center aspect-[4/3] block"
+              loading="eager"
+            />
+
+            <!-- Badge overlay on photo -->
+            <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-3 border border-slate-200/80 shadow-lg flex items-center justify-between">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-wider text-[#c81e1e]">Certified Field Team</p>
+                <p class="text-sm font-bold text-[#0d233a]">San Francisco Master Technicians</p>
+              </div>
+              <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-md">
+                100% SFPUC Compliant
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Overlapping Quick Schedule Widget -->
+<ScheduleServiceWidget />

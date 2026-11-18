@@ -1,0 +1,120 @@
+---
+import ServiceCard from './ServiceCard.astro';
+import { business } from '../content/business';
+
+const services = [
+  {
+    slug: 'backflow-testing',
+    title: 'Annual Backflow Testing',
+    summary: 'Precision differential gauge testing to satisfy mandatory annual SFPUC and DPH municipal requirements.',
+    href: '/backflow-testing/',
+    image: '/images/service-testing.jpg',
+    bullets: [
+      'Certified differential gauge testing',
+      'Official Department of Public Health tag',
+      'Direct same-day filing with SFPUC portal',
+    ],
+  },
+  {
+    slug: 'backflow-repair',
+    title: 'Backflow Repair & Rebuilds',
+    summary: 'Expert rebuild and restoration of failing check valves, relief valves, and rubber seat kits for all major brands.',
+    href: '/backflow-repair/',
+    image: '/images/service-repair.jpg',
+    bullets: [
+      'Genuine Watts, Febco & Wilkins OEM kits',
+      'Relief valve & internal disc overhaul',
+      'Complimentary retest following repair',
+    ],
+  },
+  {
+    slug: 'new-installations',
+    title: 'New Installations & Consulting',
+    summary: 'Code-compliant assembly sizing, installation, and municipal permitting for architects, builders, and owners.',
+    href: '/new-installations/',
+    image: '/images/service-install.jpg',
+    bullets: [
+      'RPZ, Double Check & PVB assemblies',
+      'Architect & general contractor advisory',
+      'Strict San Francisco plumbing code compliance',
+    ],
+  },
+  {
+    slug: 'commercial-multi',
+    title: 'Commercial & Multi-Tenant',
+    summary: 'Master compliance programs for apartment complexes, restaurants, medical clinics, and industrial facilities.',
+    href: '/backflow-testing/',
+    image: '/images/service-commercial.jpg',
+    bullets: [
+      'Multi-device bulk testing discounts',
+      'Dedicated compliance manager & portal',
+      'After-hours testing to avoid downtime',
+    ],
+  },
+  {
+    slug: 'fireline-testing',
+    title: 'Fireline & Suppression Testing',
+    summary: 'Specialized testing for dedicated fire sprinkler double detector check assemblies (DCDA) and bypass meters.',
+    href: '/backflow-testing/',
+    image: '/images/service-fireline.jpg',
+    bullets: [
+      'DCDA & RPDA assembly certified testers',
+      'San Francisco Fire Department coordination',
+      'Zero interruption to critical fire systems',
+    ],
+  },
+  {
+    slug: 'compliance-reporting',
+    title: 'Compliance Reporting & Filing',
+    summary: 'Complete municipal document handling and digital record keeping, eliminating violation penalties.',
+    href: '/compliance-reporting/',
+    image: '/images/hero-technician.jpg',
+    bullets: [
+      'Electronic submission directly to city',
+      '3-year digital archive for audit safety',
+      'Automated annual retest renewal reminders',
+    ],
+  },
+];
+---
+
+<section class="py-16 lg:py-24 bg-white border-b border-slate-200" aria-labelledby="services-heading">
+  <div class="container-page">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <p class="eyebrow mx-auto justify-center">OUR SPECIALTIES</p>
+      <h2 id="services-heading" class="text-3xl sm:text-4xl font-extrabold text-[#0d233a] tracking-tight mt-2">
+        What We Do
+      </h2>
+      <div class="w-16 h-1 bg-[#c81e1e] mx-auto mt-3 rounded-full"></div>
+      <p class="text-slate-600 text-base mt-3">
+        Comprehensive backflow prevention, precision gauge testing, mechanical repairs, and municipal compliance filing across San Francisco.
+      </p>
+    </div>
+
+    <!-- 6-Card Grid matching the reference layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {
+        services.map((s) => (
+          <ServiceCard
+            title={s.title}
+            summary={s.summary}
+            href={s.href}
+            slug={s.slug}
+            image={s.image}
+            bullets={s.bullets}
+          />
+        ))
+      }
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="/backflow-testing/" class="btn btn-cta text-base px-8 py-3.5 shadow-red inline-flex items-center gap-2">
+        <span>View All Backflow Services</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+

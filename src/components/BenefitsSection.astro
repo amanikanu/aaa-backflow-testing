@@ -1,0 +1,87 @@
+---
+import { business } from '../content/business';
+
+const benefits = [
+  {
+    title: 'Protect Clean Drinking Water',
+    desc: 'Prevents back-siphonage of non-potable water, fertilizers, and toxic chemicals into municipal supplies.',
+  },
+  {
+    title: 'Guaranteed SFPUC Compliance',
+    desc: 'Satisfies San Francisco municipal code requirements before your 30-day compliance window expires.',
+  },
+  {
+    title: 'Avoid Water Service Shut-Offs',
+    desc: 'The city aggressively issues shut-off warnings for overdue tests. We keep your water flowing without interruption.',
+  },
+  {
+    title: 'Prevent Catastrophic Flooding',
+    desc: 'Early detection of faulty check springs and failing relief valves stops unexpected basement water discharge.',
+  },
+  {
+    title: 'Direct Electronic City Filing',
+    desc: 'We transmit your test report straight to the DPH and SFPUC database — zero paperwork runaround for you.',
+  },
+  {
+    title: '3-Year Audit Protection',
+    desc: 'We store all digital certification tags and records for 3 years, readily available if ever audited by city inspectors.',
+  },
+];
+---
+
+<section class="py-16 lg:py-24 bg-slate-50 border-b border-slate-200" aria-labelledby="benefits-title">
+  <div class="container-page">
+    <div class="grid items-center gap-12 lg:grid-cols-12">
+      <!-- Left Column: High-Res Testing Image -->
+      <div class="lg:col-span-5">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200">
+          <img
+            src="/images/service-testing.jpg"
+            alt="Technician attaching test hoses to backflow assembly test cocks"
+            class="w-full h-full object-cover aspect-[4/3]"
+            loading="lazy"
+          />
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0b2341] via-[#0b2341]/80 to-transparent p-6 text-white">
+            <span class="text-xs font-bold uppercase tracking-wider text-red-400">Annual Recertification</span>
+            <p class="text-base font-bold mt-1">Calibrated Differential Pressure Gauge Testing</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Benefits Grid -->
+      <div class="lg:col-span-7">
+        <p class="eyebrow">PROTECTING YOUR PROPERTY &amp; COMMUNITY</p>
+        <h2 id="benefits-title" class="text-3xl sm:text-4xl font-extrabold text-[#0d233a] tracking-tight mt-2">
+          The Benefits of Annual Backflow Testing
+        </h2>
+        <div class="w-16 h-1 bg-[#c81e1e] mt-3 rounded-full"></div>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {
+            benefits.map((b) => (
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-blue-100 text-[#155eef] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                  ✓
+                </span>
+                <div>
+                  <h3 class="text-sm sm:text-base font-bold text-[#0d233a]">{b.title}</h3>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">{b.desc}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row items-center gap-4">
+          <a href="/book/" class="btn btn-cta text-sm px-7 py-3 w-full sm:w-auto shadow-red">
+            Schedule Annual Service
+          </a>
+          <a href={business.phoneHref} class="btn btn-ghost text-sm px-6 py-3 w-full sm:w-auto font-bold border-2 border-slate-300">
+            Call {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

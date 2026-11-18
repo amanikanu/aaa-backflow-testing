@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none" role="img" aria-label="AAA Backflow Testing">
+  <!-- Shield Badge -->
+  <g transform="translate(4, 4)">
+    <path d="M26 2L6 8v18c0 14.5 8.5 24 20 28 11.5-4 20-13.5 20-28V8L26 2z" fill="#0f2b48" stroke="#1e40af" stroke-width="2"/>
+    <path d="M26 5L9 10v16c0 12 7 20 17 23.5 10-3.5 17-11.5 17-23.5V10L26 5z" fill="#ffffff"/>
+    <path d="M9 10h34v8c0 2-2 4-4 4H13c-2 0-4-2-4-4v-8z" fill="#c81e1e"/>
+    <!-- Letters AAA on red bar -->
+    <text x="26" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">AAA</text>
+    <!-- Water drop with checkmark in lower shield -->
+    <path d="M26 24c-4 5-7 8.5-7 12a7 7 0 0 0 14 0c0-3.5-3-7-7-12z" fill="#155eef"/>
+    <path d="M23 35.5l2 2 4.5-4.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Text Brand -->
+  <g transform="translate(62, 14)">
+    <text x="0" y="16" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="900" fill="#0f2b48" letter-spacing="-0.5">AAA BACKFLOW</text>
+    <text x="0" y="32" font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#c81e1e" letter-spacing="2.5">TESTING &amp; REPAIR</text>
+  </g>
+</svg>

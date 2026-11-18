@@ -1,0 +1,32 @@
+---
+interface Step {
+  heading: string;
+  text: string;
+}
+interface Props {
+  title?: string;
+  intro?: string;
+  steps: Step[];
+}
+const { title = 'Got a test notice?', intro, steps } = Astro.props;
+---
+
+<section class="section band-tint" aria-labelledby="steps-title">
+  <div class="container-page">
+    <h2 id="steps-title" class="text-2xl font-bold">{title}</h2>
+    {intro && <p class="mt-2 text-muted max-w-2xl">{intro}</p>}
+    <ol class="mt-6 grid gap-4 md:grid-cols-3 list-none p-0">
+      {
+        steps.map((s, i) => (
+          <li class="card">
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand-700 text-white font-bold">
+              {i + 1}
+            </span>
+            <h3 class="mt-3 font-semibold text-lg">{s.heading}</h3>
+            <p class="mt-1 text-muted">{s.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

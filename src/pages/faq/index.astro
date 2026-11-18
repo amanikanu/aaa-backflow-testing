@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import { publishedFaqs } from '../../content/faq';
+import { business } from '../../content/business';
+import { localBusinessSchema, faqSchema, breadcrumbSchema } from '../../lib/schema';
+
+const core = publishedFaqs().filter((f) => !f.isNew);
+const related = publishedFaqs().filter((f) => f.isNew);
+const trail = [{ name: 'FAQ', path: '/faq/' }];
+---
+
+<BaseLayout
+  meta={{
+    title: 'Backflow Testing FAQ',
+    description:
+      'Answers about backflow test cost, failed devices, who needs a device, what backflow is, and why annual testing is required in San Francisco.',
+    path: '/faq/',
+  }}
+  schema={[localBusinessSchema(), faqSchema(), breadcrumbSchema(trail)]}
+  breadcrumbs={trail}
+>
+  <section class="section">
+    <div class="container-page max-w-3xl">
+      <h1 class="text-3xl font-bold">Frequently asked questions</h1>
+      <p class="mt-4 text-lg text-muted">
+        Plain-language answers for property owners and managers who received a test notice.
+        Regulatory statements link to the official city program so you can verify them.
+      </p>
+
+      <h2 class="mt-8 text-xl font-semibold">Testing &amp; compliance</h2>
+      <div class="mt-4"><FAQAccordion items={core} /></div>
+
+      {related.length > 0 && (
+        <>
+          <h2 class="mt-10 text-xl font-semibold">Related questions</h2>
+          <div class="mt-4"><FAQAccordion items={related} /></div>
+        </>
+      )}
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-3">
+        <a href="/book/" class="btn btn-cta">Book a Test</a>
+        <a href={`mailto:${business.email}`} class="btn btn-ghost">{business.email}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

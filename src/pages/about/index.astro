@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { business, config, serviceAreaStatement } from '../../content/business';
+import { localBusinessSchema, breadcrumbSchema } from '../../lib/schema';
+
+const area = serviceAreaStatement();
+const trail = [{ name: 'About', path: '/about/' }];
+---
+
+<BaseLayout
+  meta={{
+    title: 'About AAA Backflow Testing',
+    description:
+      'Licensed backflow testing, repair, and installation consulting in San Francisco. We handle city, DPH, and PUC paperwork and keep test records for 3 years.',
+    path: '/about/',
+  }}
+  schema={[localBusinessSchema(), breadcrumbSchema(trail)]}
+  breadcrumbs={trail}
+>
+  <!-- Page Header -->
+  <section class="bg-slate-50 border-b border-slate-200 py-12 lg:py-16">
+    <div class="container-page max-w-4xl text-center">
+      <span class="inline-block px-3 py-1 rounded-full bg-blue-100 text-[#155eef] text-xs font-bold uppercase tracking-wider mb-3">
+        Established San Francisco Specialists
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-[#0d233a] tracking-tight">About AAA Backflow Testing</h1>
+      <div class="w-16 h-1 bg-[#c81e1e] mx-auto mt-4 rounded-full"></div>
+      <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        Licensed cross-connection control, annual certification, repair rebuilds, and direct municipal compliance reporting across the <strong>{area}</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white border-b border-slate-200">
+    <div class="container-page max-w-4xl">
+      <div class="grid items-center gap-10 lg:grid-cols-12 mb-12">
+        <div class="lg:col-span-7">
+          <p class="text-base sm:text-lg text-slate-700 leading-relaxed font-medium">
+            AAA Backflow Testing is a licensed backflow testing company serving
+            the <strong>{area}</strong>. We help property owners and managers stay
+            compliant with the city’s backflow program — testing devices, repairing
+            failures, and handling the paperwork.
+          </p>
+          <p class="mt-4 text-slate-600 leading-relaxed">
+            Our mission is to keep San Francisco's drinking water safe while taking the hassle out of annual compliance.
+            When you receive your annual test notice from the water department, we handle the entire process from physical inspection to official electronic filing.
+          </p>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+            <img src="/images/team-lead.jpg" alt="Master backflow technician in workshop" class="w-full h-auto object-cover" />
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 my-10">
+        <h2 class="text-2xl font-bold text-[#0d233a]">What we do</h2>
+        <ul class="mt-4 grid sm:grid-cols-2 gap-3">
+          <li class="flex items-start gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-[#155eef] flex items-center justify-center text-xs font-bold mt-0.5">✓</span>
+            <span class="text-slate-800 text-sm font-medium">Annual certified backflow testing</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-[#155eef] flex items-center justify-center text-xs font-bold mt-0.5">✓</span>
+            <span class="text-slate-800 text-sm font-medium">Repair of failed devices and required rechecks</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-[#155eef] flex items-center justify-center text-xs font-bold mt-0.5">✓</span>
+            <span class="text-slate-800 text-sm font-medium">Consulting for new installations (architects and contractors)</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-[#155eef] flex items-center justify-center text-xs font-bold mt-0.5">✓</span>
+            <span class="text-slate-800 text-sm font-medium">Compliance reporting for the city, DPH, and PUC</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-8 text-slate-700">
+        <div>
+          <h2 class="text-xl font-bold text-[#0d233a]">Licensing &amp; credentials</h2>
+          <p class="mt-2 text-slate-600 leading-relaxed">
+            Licensed in the City and County of San Francisco{business.credentials.licensedMarin && config.marinEnabled ? ` and ${business.serviceAreaMarin}` : ''}.
+            Our testers hold AWWA certification and keep it current through annual continuing education.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-[#0d233a]">Paperwork handled for you</h2>
+          <p class="mt-2 text-slate-600 leading-relaxed">
+            We file the test reports with the city (PUC and DPH) and retain records for three years per the
+            city’s program, so you can demonstrate compliance if asked.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-bold text-[#0d233a]">Scheduling &amp; Hours</h2>
+          <p class="mt-2 text-slate-600 leading-relaxed">{business.hoursText}</p>
+          <p class="mt-2 text-slate-600 leading-relaxed">{business.afterHoursNote}</p>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row gap-4">
+        <a href="/book/" class="btn btn-cta text-base px-7 py-3 shadow-red">Book a Test</a>
+        <a href="/contact/" class="btn btn-ghost text-base px-6 py-3 border-2 border-slate-300">Contact us</a>
+        <a href={business.phoneHref} class="btn btn-ghost text-base px-6 py-3 border-2 border-slate-300 font-bold">Call {business.phone}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

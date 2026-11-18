@@ -1,0 +1,32 @@
+{
+  "name": "aaa-backflow-testing",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marketing & booking site for AAA Backflow Testing LLC (San Francisco, CA).",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "node scripts/generate-sitemap.mjs && ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint:discrepancies": "node scripts/check-discrepancies.mjs",
+    "verify": "npm run build && npm run lint:discrepancies && npm run test"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/vercel": "^7.8.0",
+    "@fontsource/space-grotesk": "^5.3.0",
+    "astro": "^4.16.0",
+    "tailwindcss": "^3.4.14"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@types/node": "^20.16.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

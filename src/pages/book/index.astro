@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { business } from '../../content/business';
+import { localBusinessSchema, breadcrumbSchema } from '../../lib/schema';
+
+const trail = [{ name: 'Book a Test', path: '/book/' }];
+// FullSlate over https. The embed is loaded ONLY on click — no third-party
+// script or iframe on page load (PRD F4 / 8).
+const schedulerUrl = business.schedulingUrl;
+---
+
+<BaseLayout
+  meta={{
+    title: 'Book a Backflow Test',
+    description:
+      'Book your San Francisco backflow test online with AAA Backflow Testing. Secure scheduling through FullSlate; we handle the city paperwork afterward.',
+    path: '/book/',
+  }}
+  schema={[localBusinessSchema(), breadcrumbSchema(trail)]}
+  breadcrumbs={trail}
+>
+  <section class="section">
+    <div class="container-page max-w-3xl">
+      <h1 class="text-3xl font-bold">Book a backflow test</h1>
+      <p class="mt-4 text-lg text-muted">
+        Choose a time that works for you. Scheduling is handled securely through FullSlate. After your
+        test, we tag the device and file the paperwork with the city (PUC and DPH).
+      </p>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <a href={schedulerUrl} class="btn btn-cta text-base">Open the scheduler</a>
+        <button id="load-scheduler" type="button" class="btn btn-ghost">Load scheduler on this page</button>
+        <a href={business.phoneHref} class="btn btn-ghost">Call {business.phone}</a>
+      </div>
+
+      <p class="mt-4 text-sm text-muted">{business.afterHoursNote}</p>
+
+      <div id="scheduler-frame" class="mt-6" aria-live="polite"></div>
+
+      <noscript>
+        <p class="mt-4">
+          Scheduling requires JavaScript. Please
+          <a href={schedulerUrl} class="text-brand-700 font-medium">open the scheduler directly</a>
+          or call {business.phone}.
+        </p>
+      </noscript>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline define:vars={{ schedulerUrl }}>
+  (function () {
+    var btn = document.getElementById('load-scheduler');
+    var mount = document.getElementById('scheduler-frame');
+    if (!btn || !mount) return;
+    btn.addEventListener('click', function () {
+      btn.disabled = true;
+      btn.textContent = 'Loading scheduler…';
+      var iframe = document.createElement('iframe');
+      iframe.src = schedulerUrl;
+      iframe.title = 'AAA Backflow Testing scheduling';
+      iframe.setAttribute('loading', 'lazy');
+      iframe.style.width = '100%';
+      iframe.style.minHeight = '720px';
+      iframe.style.border = '1px solid #d9e2e8';
+      iframe.style.borderRadius = '0.75rem';
+      mount.appendChild(iframe);
+    });
+  })();
+</script>
