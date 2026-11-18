@@ -1,0 +1,55 @@
+---
+const mailtoSubject = encodeURIComponent('Inquiry about getting this website (AAA Backflow Testing)');
+const mailtoBody = encodeURIComponent(
+  'Hi Must team,\n\nI am interested in getting this website template for my business (AAA Backflow Testing).\n\nPlease let me know the details and how to get started.\n\nThanks!'
+);
+const mailtoUrl = `mailto:sales@must.company?subject=${mailtoSubject}&body=${mailtoBody}`;
+---
+
+<!-- Preview Banner (Must Template Preview) -->
+<div class="bg-[#0b1117] text-white border-b border-white/10 px-4 py-2.5 sm:py-3 relative z-50">
+  <div class="container-page flex items-center justify-between gap-4">
+    <!-- Left: Banner text and timer countdown note -->
+    <div class="flex flex-col sm:gap-0.5">
+      <span class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest text-white leading-tight">
+        A website made for your business
+      </span>
+      <div class="flex items-center gap-1.5 text-xs sm:text-[13px] text-slate-300 mt-0.5">
+        <svg
+          class="w-3.5 h-3.5 text-cyan-400 shrink-0"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="9" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 3" />
+        </svg>
+        <span>This preview will be deleted in 30 days</span>
+      </div>
+    </div>
+
+    <!-- Right: "Get this site" Button -->
+    <div class="shrink-0">
+      <a
+        href={mailtoUrl}
+        class="inline-flex items-center gap-1.5 bg-white hover:bg-slate-100 text-[#0b1117] font-bold text-xs sm:text-sm px-4 py-2 sm:px-6 sm:py-2.5 rounded-full shadow-md transition-all duration-150 hover:scale-[1.02] active:scale-[0.98]"
+        aria-label="Get this site — email sales@must.company"
+      >
+        <span>Get this site</span>
+        <svg
+          class="w-3.5 h-3.5 shrink-0"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H9M17 7V15" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
